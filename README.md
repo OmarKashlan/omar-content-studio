@@ -1,22 +1,60 @@
-# استوديو عمر للمحتوى
+# Omar Content Studio
 
-ابدأ بفتح `docs/index.html` في متصفح حديث. اختَر نوع المنشور واكتب فكرتك. يحفظ الاستوديو النص على جهازك أثناء الكتابة. زر «نسخ الطلب للذكاء الاصطناعي» يعطيك طلباً جاهزاً لـChatGPT يشمل السؤال عن الصور واقتراح برومبت لـNano Banana عند اختيار صورة مولّدة. الصق النص الناتج في المسوّدة. بعد النشر اليدوي على لينكدإن، أدخل الرابط والتاريخ واضغط «حفظ في السجل».
+I use this Arabic, right-to-left dashboard to prepare one LinkedIn post a week. I can jot down an idea on my phone after a tech meetup, finish the draft on my laptop, and check back a week after publishing to see how readers responded.
 
-راجع نتائج المنشور بعد أسبوع من التذكيرات. لإبقاء البيانات معك عند تغيير رابط اللوحة أو المتصفح، استخدم «الحفظ والمزامنة ← تنزيل نسخة احتياطية»، ثم «استعادة ملف» من الموقع الجديد. ملفات النسخ الاحتياطية فيها محتواك الشخصي؛ احتفظ بها خارج مستودع الشيفرة.
+## From idea to published post
 
-## رفع المشروع
+1. **Choose a post type.** Start with an event you attended, a tutorial, an achievement, a project experience, a personal story, or a discussion question. The included **Rive Dive** draft is a good place to try the workflow.
+2. **Write down the detail you want to share.** Select **Copy AI prompt** (نسخ الطلب للذكاء الاصطناعي) and paste it into ChatGPT. The prompt asks about photos or other material you have. If you want a generated illustration, it asks ChatGPT to write a prompt for Nano Banana. Paste the finished post back into your draft.
+3. **Publish manually on LinkedIn.** Save the post URL and publication date in the dashboard. Seven days later, a reminder appears so you can record reach, saves, comments, and profile visits.
 
-فك ضغط الحزمة، وارفع محتوياتها إلى جذر مستودع GitHub تختاره. ستجد مجلدي `docs` و`functions` وملف `schema.sql` في المستوى الأول. إذا كان الاستوديو منشوراً مسبقاً بنفس الإعدادات، يكفي تحديث الملفات في نفس المستودع؛ تبقى قاعدة D1 والمفتاح والبيانات كما هي.
+The dashboard also includes an idea bank, a publishing calendar, a profile checklist, and a place to keep track of people and conversations you want to follow up on.
 
-### GitHub للشيفرة وCloudflare Pages للمزامنة
+## Try it locally
 
-1. من Cloudflare أنشئ قاعدة **D1** باسم تختاره. من وحدة SQL للقاعدة نفّذ محتوى `schema.sql` لإنشاء الجدول.
-2. أنشئ مشروع **Pages** من مستودع GitHub نفسه. اختر إعداد إطار العمل **None**، ومجلد الإخراج **docs**، واترك جذر المشروع كما هو. يمكن استخدام `exit 0` لأمر البناء. مجلد `functions` يبقى في جذر المستودع.
-3. في إعدادات مشروع Pages، ضمن **Bindings**، أضف ربط قاعدة **D1** بالاسم `DB` واختر القاعدة التي أنشأتها. ضمن **Variables and Secrets** أضف سرّاً مشفراً باسم `STUDIO_KEY`، واجعل قيمته مفتاحاً عشوائياً طويلاً من مدير كلمات المرور. اضبط الإعدادين لبيئة الإنتاج ثم أعد النشر. احتفظ بقيمة المفتاح عندك ولا تضعها في المستودع.
-4. افتح **نفس رابط Cloudflare للإنتاج** على الموبايل واللابتوب. مرة واحدة بكل متصفح، افتح «الحفظ والمزامنة»، أدخل المفتاح واضغط «تفعيل المزامنة التلقائية». يُحفظ المفتاح على الجهاز الشخصي، ويمكن نسيانه من نفس الشاشة.
-5. اكتب فكرتك كالمعتاد. تُحفظ محلياً أثناء الكتابة، وتُرفع بعد توقف قصير. عند فتح اللوحة على الجهاز الآخر أو العودة إليها تُجلب التحديثات، كما تفحص الصفحة المفتوحة النسخة السحابية دورياً. إذا انقطع الاتصال تبقى التعديلات محلية وتُزامَن بعد رجوعه واللوحة مفتوحة، أو في الفتح التالي. قبل إغلاق الجهاز بعد تعديل مهم، انتظر ظهور «متزامن مع السحابة».
-6. إذا عدّل الجهازان بياناتهما قبل المزامنة، تظهر لك خيارات لاعتماد نسخة الجهاز أو السحابة. الاختيار يخص بيانات اللوحة كاملة. تبقى النسخة التي استُبدلت قابلة للتنزيل من «تنزيل نسخة الاسترجاع». عند وصول تعديل من جهاز آخر أثناء الكتابة، تؤجّل اللوحة جلبه إلى أن تغلق المحرّر. إذا أغلقت سؤال التعارض، افتح «الحفظ والمزامنة» ثم «مراجعة المزامنة» للعودة إليه.
+Download or unzip the project and open `docs/index.html` in a modern browser. The interface uses plain HTML, CSS, and JavaScript and runs without a build step. Drafts are saved in the browser on the device you're using.
 
-واجهة الموقع قابلة للفتح عبر رابط الاستضافة. قاعدة البيانات مخصّصة لمستخدم واحد، وقراءتها وتعديلها يحتاجان إلى المفتاح. ما تشاركه داخل الشيفرة المنشورة (مثل مثال جلسة Rive) يصبح جزءاً من واجهة الموقع. المسوّدات التي تكتبها في المتصفح لا تُضاف إلى GitHub.
+To move local drafts to a new browser or the deployed site, open **Save and sync** (الحفظ والمزامنة), choose **Download backup** (تنزيل نسخة احتياطية), and restore the file at the new location.
 
-[استضافة HTML على Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/) · [ربط قاعدة البيانات والأسرار](https://developers.cloudflare.com/pages/functions/bindings/)
+## Deploy to Cloudflare
+
+GitHub stores the source code. Cloudflare Pages serves the dashboard and its sync API at one URL. Cloudflare D1 stores the copy shared between your devices.
+
+1. Upload the project files to the root of your `omar-content-studio` repository. The `docs/` and `functions/` directories should sit alongside `README.md` and `schema.sql`.
+2. Create a **D1 database** in Cloudflare. Open its SQL console and run the contents of [schema.sql](schema.sql) to create the storage table.
+3. Create a **Cloudflare Pages** project and connect it to your GitHub repository. If the repository is private, grant Cloudflare access to it.
+
+| Pages setting | Value |
+|---|---|
+| Production branch | The branch containing the project, usually `main` |
+| Framework preset | `None` |
+| Build command | `exit 0` |
+| Build output directory | `docs` |
+| Root directory | Leave blank to use the repository root |
+
+In the Pages project's **Production** environment, configure both entries below and redeploy.
+
+| Location | Required name | Value |
+|---|---|---|
+| Settings → Bindings | `DB` | A D1 binding pointing to the database you created |
+| Settings → Variables and Secrets | `STUDIO_KEY` | A long, random key generated by a password manager and stored as a secret |
+
+Anyone with the sync key can read and update the dashboard data. Keep its value outside the repository. [Cloudflare Pages deployment guide](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/) · [Cloudflare bindings and secrets](https://developers.cloudflare.com/pages/functions/bindings/)
+
+## Sync your phone and laptop
+
+Open the **same production URL** on both devices. In **Save and sync** (الحفظ والمزامنة), enter the sync key and select **Enable automatic sync** (تفعيل المزامنة التلقائية) once per browser. To check the connection, write a draft on your phone, wait for **Synced to cloud** (متزامن مع السحابة), then open the dashboard on your laptop.
+
+- **While you write**, drafts save locally. Changes upload after a short pause. The dashboard checks for updates when you open it or return to it.
+- **If you go offline**, edits stay on your device. They sync when the connection returns while the dashboard is open, or the next time you open it.
+- **If both devices change before syncing**, the dashboard asks which complete copy to keep. You can download the replaced copy with **Download recovery copy** (تنزيل نسخة الاسترجاع).
+
+## Project files
+
+| File | Purpose |
+|---|---|
+| [docs/index.html](docs/index.html) and [docs/styles.css](docs/styles.css) | Arabic interface and responsive layout |
+| [docs/studio.js](docs/studio.js) | Post editor, ideas, calendar, and results |
+| [docs/sync.js](docs/sync.js) | Browser storage, automatic sync, and backups |
+| [functions/api/studio.js](functions/api/studio.js) | Checks the sync key and handles reads and writes at `/api/studio` |
+| [schema.sql](schema.sql) | Creates the D1 table for dashboard data and its revision number |
