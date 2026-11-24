@@ -18,7 +18,11 @@ const shortDate=d=>d?new Intl.DateTimeFormat('ar',{day:'numeric',month:'long'}).
 const isoDay=(d=new Date())=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Damascus',year:'numeric',month:'2-digit',day:'2-digit'}).format(d);
 function reviewDay(p){if(!p.url||!p.date)return '';let d=new Date(p.date+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+7);return d.toISOString().slice(0,10)}
 function due(){return db.posts.filter(p=>reviewDay(p)&&reviewDay(p)<=isoDay()&&!p.reviewed)}
-function goto(k){page=k;render();window.scrollTo(0,0)}
+function goto(k){
+  page=k;
+  render();
+  $('view').scrollTop=0;
+}
 function title(t,s){return '<div class="pageintro"><h1>'+t+'</h1><p>'+s+'</p></div>'}
 function rows(list,fn,empty){return list.length?list.map(fn).join(''):'<p class="meta">'+empty+'</p>'}
 function row(name,sub,action=''){return '<div class="listrow"><div><strong>'+esc(name)+'</strong><div class="meta">'+esc(sub)+'</div></div>'+action+'</div>'}

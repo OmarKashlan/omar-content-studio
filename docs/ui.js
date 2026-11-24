@@ -52,7 +52,7 @@
     setMenu(false);
     view.focus({preventScroll:true});
     if (!reducedMotion.matches && typeof view.animate === 'function') {
-      view.animate([{opacity:.5, transform:'translateY(5px)'}, {opacity:1, transform:'translateY(0)'}],
+      view.animate([{opacity:.65}, {opacity:1}],
         {duration:170,easing:'ease-out'});
     }
   });
